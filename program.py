@@ -51,8 +51,12 @@ jogadorDaVez = jogador1
 while not isGameOver:
     printBoard()
 
-    coordenadaX = int(input(f"{jogadorDaVez} (jogador X), digite a coordenada X (0-2): "))
-    coordenadaY = int(input(f"{jogadorDaVez} (jogador Y), digite a coordenada Y (0-2): "))
+    try: 
+      coordenadaX = int(input(f"{jogadorDaVez} {'(x)' if jogadorDaVez == jogador1 else '(y)'}, digite a coordenada X (0-2): "))
+      coordenadaY = int(input(f"{jogadorDaVez} {'(x)' if jogadorDaVez == jogador1 else '(y)'}, digite a coordenada Y (0-2): "))
+    except ValueError:
+        print("Entrada inválida. Digite um número entre 0 e 2.")
+        continue
 
     if isValidMove(coordenadaX, coordenadaY) == False:
         print("Coordenadas inválidas. Tente novamente.")
